@@ -152,6 +152,8 @@ terraform.tfstate.backup is deletes all data and move backup to terraform.tfstat
 
 ===================================================vpc_subnet.tf===============================================================
 
+#create vpc and subnet
+
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_vpc
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
 resource "aws_vpc" "testing-vnd" {
@@ -178,10 +180,64 @@ resource "aws_subnet" "testing-subnet" {
 #you can specify anywhere like subnet needs vpc 
 #no need to add first vpc and subnet just mention in .tf file irrespective of order terraform will do the process 
 
+======================================== both are same (create subnet first then vpc second) ===========================================
+
+#create subnet and vpc
+
+resource "aws_subnet" "testing-subnet" {
+  vpc_id     = aws_vpc.testing-vnd.id
+  cidr_block = "172.32.1.0/24"
+
+  tags = {
+    Name = "testing-subnet"
+  }
+}
+
+resource "aws_vpc" "testing-vnd" {
+  cidr_block = "172.32.0.0/16"
+   tags = {
+    Name = "testing-vnd"
+  }
+}
 
 
 
+#Note:
+#once you apply "terraform apply" it will perform in order , even if we specify wrong order in .tf file , it deploy in proper order.
 
+
+======================================= terraform init =====================================================
+
+.terraform
+Once you intialise "terraform init" it creates .terraform folder and install all necessary plugin regarding provider
+
+terraform.tfstate
+store current status of state of resources like "provider" and all resources
+
+
+
+============================   WHAT happen IF WE DELETE TERRAFORM.tfSTATE FILE? =========================================
+
+We applied "terraform apply" and it has created all resource like ec2, vpc, subnet etc 
+it's all data store in "terraform.tfstate" file 
+
+If you delete "terraform.tfstate" file what is happend?
+
+it will create new resources like same "even if the resource still exists" terraform will create a new resource like same name and same configuration 
+we will get deployed resources.
+
+delete terraform.state file it donot know the resources "terraform" has deployed previously then it will start the same process from scratch.
+even if resources exists.
+
+like environments and resoruces all will be multiple resources.
+
+so don't mess with terraform.tfstate file
+
+==========================================================
+terraform will not consider the resources if its not created using .tf file
+
+like : if resource is already exist with same name , it creates a resource (if resource is having same configurations) if destroy it delete only the created resources
+from .tf created only, it will not touch other resources.
 
 
 
