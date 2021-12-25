@@ -5,5 +5,5 @@ create SUBNET,
 associate SUBNET WITH ROUTE TABLE
 create A SECURITY GROUP TO ALLOW PORT 80,22,443
 create A NETWORK INTERFACE with an IP in the subnet that was created in step4
-create A ELASTIC IP to the network interface created in step7
+assign A ELASTIC IP to the network interface created in step7
 create a UBUNTU SERVER and install/enable apache
