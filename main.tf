@@ -10,8 +10,8 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region     = "us-east-1"
-  access_key = "AKIAUMHZDA7YwertyeeXQ3U7JXB"                              #not recommended to store credentials like static 
-  secret_key = "G5lFp8FpzqjwertyrewRBYF7NhM/ccArSdiIzavTa6j7nGrY"
+  access_key = "fghifdkjhfhjkfghghjkghjkgbbghj"                              #not recommended to store credentials like static 
+  secret_key = "sdfghjklkjhgfdfghjkl;dfghjklfghjkasdfghjl"
 }
 
 
