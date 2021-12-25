@@ -118,3 +118,63 @@ we delete resources.
 #so we can add any no of .tf files it execute all 
 #main.tf only provider and credentials you have to store as a standard perspective 
 #we can include all in only main.tf file but its not feasible or difficult to update or debug the issue
+
+=======================================================================
+If you have created ec2 instance using ec2.tf file it store state date terraform.tf state file ,once you comment the resource or delete the resource from ec2.tf file
+it treat as not needed so it destroy the resources even if you trigger "terraform apply"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
