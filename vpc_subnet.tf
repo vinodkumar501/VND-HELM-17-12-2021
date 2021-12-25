@@ -1,22 +1,42 @@
+#CREATE 2 VPC'S AND CREATE 2 SUBNETS ATTACHED TO IT
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_vpc
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
-resource "aws_vpc" "testing-vnd" {
+
+resource "aws_vpc" "prod-vnd" {
   cidr_block = "172.32.0.0/16"
    tags = {
-    Name = "testing-vnd"
+    Name = "production-vpc"
+  }
+}
+
+resource "aws_vpc" "dev-vnd" {
+  cidr_block = "172.33.0.0/16"
+   tags = {
+    Name = "Developer-vpc"
   }
 }
 
 #subnet creation
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
-resource "aws_subnet" "testing-subnet" {
-  vpc_id     = aws_vpc.testing-vnd.id
+
+resource "aws_subnet" "prod-subnet" {
+  vpc_id     = aws_vpc.prod-vnd.id
   cidr_block = "172.32.1.0/24"
 
   tags = {
-    Name = "testing-subnet"
+    Name = "production-subnet"
   }
 }
+
+resource "aws_subnet" "dev-subnet" {
+  vpc_id     = aws_vpc.dev-vnd.id
+  cidr_block = "172.33.1.0/24"
+
+  tags = {
+    Name = "developer-subnet"
+  }
+}
+
 
 
 #note:
