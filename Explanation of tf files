@@ -123,9 +123,10 @@ we delete resources.
 If you have created ec2 instance using ec2.tf file it store state date terraform.tf state file ,once you comment the resource or delete the resource from ec2.tf file
 it treat as not needed so it destroy the resources even if you trigger "terraform apply"
 
+*********************************************** terraform.tfstate  and terraform.tfstate.backup ***********************************************
 
-
-
+once you apply "terraform apply" it stores the data into terraform.tfstate file , once you destroy "terraform destroy" it erase data from terraform.tfstate and load the backup
+data into "terraform.tfstate.backup"
 
 
 
