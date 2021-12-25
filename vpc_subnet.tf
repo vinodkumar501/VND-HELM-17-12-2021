@@ -17,3 +17,9 @@ resource "aws_subnet" "testing-subnet" {
     Name = "testing-subnet"
   }
 }
+
+
+#note:
+#order in which you place code is doesnot matter in terraform
+#you can specify anywhere like subnet needs vpc 
+#no need to add first vpc and subnet just mention in .tf file irrespective of order terraform will do the process 
