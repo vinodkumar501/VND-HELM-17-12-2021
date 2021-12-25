@@ -1,0 +1,122 @@
+============================================= TERRAFORM ==============================================
+
+Ansible,Chef,Puppet are configuration management tools which means that they are primarily designed for install and manage software on existing servers.
+
+Terraform and cloudformation are infrastructure orchaestration tools which basically provision the servers and infrastructure by themselves.
+
+CM tools can do some degree of infrastructure provisioning but not much.
+
+Which IAC tool you chose
+-> Is your infrastructure is going to be vendor specific in longer term.
+->Are you planning to have multi-cloud or hybrid cloud based infrastructure
+->How well does this integrate with CM tools
+->Price and support
+
+TERRAFORM:
+
+-> Support multiple platfroms,has 100's of providers
+-> simple config language and faster learning curve.
+-> Easy integreate with CM tools like ansible
+-> easily extensible with the help of plugins
+-> free
+
+============================================================== INSTALL ON WINDOWS  ==============================================================
+
+Install it on windows: (https://www.terraform.io/downloads)
+
+clink on windows download 64-bit
+https://releases.hashicorp.com/terraform/1.1.2/terraform_1.1.2_windows_amd64.zip
+
+
+Extract 
+Gotopath where terraform extract and execute (terraform.exec) takes place.
+
+$./terraform.exec or ./terraform
+$./terraform
+
+========== If you want to execute your commands from anywhere you need to add this path in "environment variables"===============
+on windows
+Search "edit the system environment variable"
+
+Advanced ---> Environment Variables
+
+"system variable" --> click on "path" --> create "new" and add "path of terrform executable" 
+
+C:\Users\vinod.chenna\Desktop\Terraform
+
+click on OK 
+
+
+you can execute "terraform" any where once you update path on env variables.
+
+================================== ================================== ================================== ==================================
+OR
+
+$terraform
+
+$ ./terraform
+o/p
+------------------------------------------
+Usage: terraform [global options] <subcommand> [args]
+
+The available commands for execution are listed below.
+The primary workflow commands are given first, followed by
+less common or more advanced commands.
+
+Main commands:
+  init          Prepare your working directory for other commands
+  validate      Check whether the configuration is valid
+  plan          Show changes required by the current configuration
+  apply         Create or update infrastructure
+  destroy       Destroy previously-created infrastructure
+
+=======================================================
+$terraform -v
+$ ./terraform -v
+Terraform v1.1.2
+on windows_amd64
+  
+====================================================== INSTALL ON LINUX ====================================================
+https://www.terraform.io/downloads
+
+amazon linux2
+
+->sudo yum install -y yum-utils
+->sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+->sudo yum -y install terraform
+
+->terraform -v
+Terraform v1.1.2
+on linux_amd64
+
+You can execute anywhere on the vm machine   
+
+============ OR ==============
+wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip
+ls
+unzip terraform_0.15.0_linux_amd64.zip 
+ls
+cd terraform
+
+$sudo mv terraform /usr/local/bin
+
+ls /usr/local/bin
+
+terraform
+
+
+If we want run that command first cp it to /bin
+
+check
+echo $PATH
+/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin
+
+Once we copy to bin we can run terraform command from anywhere you wish
+# cd tmp/
+# terrfrom -v 
+
+Main commands:
+  init          Prepare your working directory for other commands
+  validate      Check whether the configuration is valid
+  plan          Show changes required by the current configuration
+  apply         Create or update infrastructure
