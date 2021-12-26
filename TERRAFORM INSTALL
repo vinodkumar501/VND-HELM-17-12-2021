@@ -33,6 +33,7 @@ Gotopath where terraform extract and execute (terraform.exec) takes place.
 
 $./terraform.exec or ./terraform
 $./terraform
+$./terraform -v or $./terraform version
 
 ========== If you want to execute your commands from anywhere you need to add this path in "environment variables"===============
 on windows
